@@ -16,7 +16,7 @@ def test_linear_regression_gd(sample_data):
     X_train, X_test, y_train, y_test = sample_data
 
     # tinyML model
-    model = regressors.LinearRegressionGD(lr=0.01, epochs=2000)
+    model = regressors.LinearRegressionGD(epochs=2000)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
