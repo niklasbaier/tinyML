@@ -55,13 +55,9 @@ jobs:
       #     poetry run alembic check
 
       - name: Unit tests
-        env:
-          PYTHONPATH: ./tinyML/src
         run: poetry run pytest --cov tests/unit/. --cov-report=xml:tests/unit/coverage_unit.xml
 
       - name: Integration tests
-        env:
-          PYTHONPATH: ./tinyML/src
         run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml
 
       - name: Upload test coverage to Codecov
