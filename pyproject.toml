@@ -13,7 +13,6 @@ build-backend = "poetry.core.masonry.api"
 python = "^3.11"
 python-dotenv = "^1.0.1"
 numpy = "^1.26.4"
-matplotlib = "^3.9.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
@@ -32,6 +31,11 @@ mkdocs-git-authors-plugin = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
 mkdocs-include-markdown-plugin = "*"
+
+
+
+[tool.poetry.group.viz.dependencies]
+matplotlib = "^3.9.0"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
