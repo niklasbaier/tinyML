@@ -1,3 +1,9 @@
+## v0.3.1 (2024-06-01)
+
+### Refactor
+
+- more concise formulation
+
 ## v0.3.0 (2024-06-01)
 
 ### Feat
