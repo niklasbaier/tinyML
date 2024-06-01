@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tinyML"
-version = "0.2.0"
+version = "0.3.0"
 description = "homemade ML algorithms from scratch"
 authors = ["niklasbaier <niklas.baier@yahoo.de>"]
 readme = "README.md"
@@ -35,7 +35,7 @@ mkdocs-include-markdown-plugin = "*"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.2.0"
+version = "0.3.0"
 tag_format = "v$version"
 version_files = ["pyproject.toml:^version", "src/tinyML/__init__.py:^__version"]
 update_changelog_on_bump = true

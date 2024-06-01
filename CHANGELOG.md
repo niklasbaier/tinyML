@@ -1,3 +1,15 @@
+## v0.3.0 (2024-06-01)
+
+### Feat
+
+- add Linear Regression with OLS algorithm & corresponding test
+
+### Refactor
+
+- add Base Class for Linear Regression and refactor Gradient Descent & OLS fitting algorithm implementations into proper child classes
+- renaming function parameter
+- slightly adjust MSE calculation
+
 ## v0.2.0 (2024-06-01)
 
 ### Feat
