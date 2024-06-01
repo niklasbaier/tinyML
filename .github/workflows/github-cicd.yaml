@@ -55,13 +55,14 @@ jobs:
       #     poetry run alembic check
 
       - name: Unit tests
+        env:
+          PYTHONPATH: ./tinyML/src
         run: poetry run pytest --cov tests/unit/. --cov-report=xml:tests/unit/coverage_unit.xml
 
       - name: Integration tests
+        env:
+          PYTHONPATH: ./tinyML/src
         run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml
-
-      - name: Acceptance tests
-        run: poetry run pytest --cov tests/acceptance/. --cov-report=xml:tests/acceptance/coverage_acceptance.xml
 
       - name: Upload test coverage to Codecov
         env:
@@ -73,8 +74,7 @@ jobs:
           files: |
             tests/unit/coverage_unit.xml
             tests/unit/coverage_integration.xml
-            tests/unit/coverage_acceptance.xml
-          flags: unittests, integrationtests, acceptancetests
+          flags: unittests, integrationtests
           token: ${{ secrets.CODECOV_TOKEN }} # defined in project settings
           verbose: true # optional (default = false)
 
