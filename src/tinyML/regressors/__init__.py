@@ -1,3 +1,3 @@
-from tinyML.regressors.linear_regression import LinearRegression
+from tinyML.regressors.linear_regression import LinearRegressionGD, LinearRegressionOLS
 
-__all__ = ["LinearRegression"]
+__all__ = ["LinearRegressionGD", "LinearRegressionOLS"]

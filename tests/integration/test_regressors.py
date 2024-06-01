@@ -12,11 +12,11 @@ def sample_data():
     return model_selection.train_test_split(X, y, test_size=0.2, random_state=1234)
 
 
-def test_linear_regression(sample_data):
+def test_linear_regression_gd(sample_data):
     X_train, X_test, y_train, y_test = sample_data
 
     # tinyML model
-    model = regressors.LinearRegression(lr=0.01, n_iters=2000)
+    model = regressors.LinearRegressionGD(lr=0.01, epochs=2000)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
@@ -28,3 +28,21 @@ def test_linear_regression(sample_data):
     assert commons.mse(y_test, y_pred) == pytest.approx(
         commons.mse(y_test, sklearn_y_pred)
     )  # approx due to gradient descent
+
+
+def test_linear_regression_ols(sample_data):
+    X_train, X_test, y_train, y_test = sample_data
+
+    # tinyML model
+    model = regressors.LinearRegressionOLS()
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+
+    # scikit-learn model
+    sklearn_model = linear_model.LinearRegression()
+    sklearn_model.fit(X_train, y_train)
+    sklearn_y_pred = sklearn_model.predict(X_test)
+
+    assert commons.mse(y_test, y_pred) == pytest.approx(
+        commons.mse(y_test, sklearn_y_pred)
+    )
