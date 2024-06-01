@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a work-in-progress package that implements classical ML algorithms from scratch in pure Python.
+This is a work-in-progress package that implements classical ML algorithms from scratch in pure Python. Correctness of implementation is ensured via unit & integration tests against respective implementations of the `scikit-learn` package.
 
 ## Badges
 
