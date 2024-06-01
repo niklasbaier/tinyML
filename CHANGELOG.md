@@ -1,3 +1,9 @@
+## v0.3.2 (2024-06-01)
+
+### Refactor
+
+- remove unneeded folders & .gitkeep files
+
 ## v0.3.1 (2024-06-01)
 
 ### Refactor
