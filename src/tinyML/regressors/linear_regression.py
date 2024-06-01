@@ -18,7 +18,7 @@ class BaseLinearRegression:
         raise NotImplementedError("Method must be implemented in subclass.")
 
     def predict(self, X):
-        if self.weights is None or self.bias is None:
+        if None in (self.weights, self.bias):
             raise ValueError("Model has not been trained yet.")
         return np.dot(X, self.weights) + self.bias
 
