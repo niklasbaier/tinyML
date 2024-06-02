@@ -54,14 +54,15 @@ class LinearRegressionGD(BaseLinearRegression):
 
         for epoch in range(self.epochs):
             y_pred = np.dot(X, self.weights) + self.bias
-            loss = commons.mse(y_true, y_pred)
-            self.loss_history.append(loss)
 
             dw = -(2 / n_samples) * np.dot(X.T, (y_true - y_pred))
             db = -(2 / n_samples) * np.sum(y_true - y_pred)
 
             self.weights -= self.learning_rate * dw
             self.bias -= self.learning_rate * db
+
+            loss = commons.mse(y_true, y_pred)
+            self.loss_history.append(loss)
 
             if self.verbose and (epoch % 100 == 0 or epoch == self.epochs - 1):
                 logger.info(f"Epoch: {epoch}/{self.epochs} | Loss: {loss:.4f}")

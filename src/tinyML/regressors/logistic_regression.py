@@ -34,16 +34,17 @@ class LogisticRegression:
         for epoch in range(self.epochs):
             linear_pred = np.dot(X, self.weights) + self.bias
             y_pred = commons.sigmoid(linear_pred)
-            loss = commons.binary_cross_entropy(y_true, y_pred)
-            self.loss_history.append(loss)
-            accuracy = commons.accuracy(y_true, y_pred)
-            self.accuracy_history.append(accuracy)
 
             dw = (1 / n_samples) * np.dot(X.T, (y_pred - y_true))
             db = (1 / n_samples) * np.sum(y_pred - y_true)
 
             self.weights -= self.learning_rate * dw
             self.bias -= self.learning_rate * db
+
+            loss = commons.binary_cross_entropy(y_true, y_pred)
+            self.loss_history.append(loss)
+            accuracy = commons.accuracy(y_true, y_pred)
+            self.accuracy_history.append(accuracy)
 
             if self.verbose and (epoch % 100 == 0 or epoch == self.epochs - 1):
                 logger.info(
