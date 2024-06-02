@@ -17,6 +17,7 @@ class LogisticRegression:
         self.epochs = epochs
         self.verbose = verbose
         self.loss_history: t.List[float] = []
+        self.accuracy_history: t.List[float] = []
         self.weights = None
         self.bias = None
 
@@ -33,32 +34,51 @@ class LogisticRegression:
         for epoch in range(self.epochs):
             linear_pred = np.dot(X, self.weights) + self.bias
             y_pred = commons.sigmoid(linear_pred)
-            loss = commons.cross_entropy(y_true, y_pred)
+            loss = commons.binary_cross_entropy(y_true, y_pred)
             self.loss_history.append(loss)
+            accuracy = commons.accuracy(y_true, y_pred)
+            self.accuracy_history.append(accuracy)
 
-            dw = -(2 / n_samples) * np.dot(X.T, (y_true - y_pred))
-            db = -(2 / n_samples) * np.sum(y_true - y_pred)
+            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y_true))
+            db = (1 / n_samples) * np.sum(y_pred - y_true)
 
             self.weights -= self.learning_rate * dw
             self.bias -= self.learning_rate * db
 
-            # if self.verbose and (epoch % 100 == 0 or epoch == self.epochs - 1):
-            #     logger.info(f"Epoch: {epoch}/{self.epochs} | Loss: {loss:.4f}")
-
-    def visualize_loss(self):
-        plt.plot(range(self.epochs), self.loss_history, label="Training Loss")
-        plt.xlabel("Epochs")
-        plt.ylabel("Loss")
-        plt.title("Training Loss over Epochs")
-        plt.legend()
-        plt.show()
+            if self.verbose and (epoch % 100 == 0 or epoch == self.epochs - 1):
+                logger.info(
+                    f"Epoch: {epoch}/{self.epochs} | Loss: {loss:.4f} | Accuracy: {accuracy:.4f}"
+                )
 
     def predict_probability(self, X):
-        # if None in (self.weights, self.bias):
-        #     raise ValueError("Model has not been trained yet.")
+        if self.weights is None or self.bias is None:
+            raise ValueError("Model has not been trained yet.")
         linear_pred = np.dot(X, self.weights) + self.bias
         return commons.sigmoid(linear_pred)
 
     def predict_binary(self, X):
         y_pred_probability = self.predict_probability(X)
         return np.where(y_pred_probability >= 0.5, 1, 0)
+
+    def visualize_loss_accuracy(self):
+        plt.subplot(1, 2, 1)
+        plt.plot(range(self.epochs), self.loss_history, label="Training Loss")
+        plt.xlabel("Epochs")
+        plt.ylabel("Loss")
+        plt.title("Training Loss over Epochs")
+        plt.legend()
+
+        plt.subplot(1, 2, 2)
+        plt.plot(
+            range(self.epochs),
+            self.accuracy_history,
+            label="Training Accuracy",
+            color="orange",
+        )
+        plt.xlabel("Epochs")
+        plt.ylabel("Accuracy")
+        plt.title("Training Accuracy over Epochs")
+        plt.legend()
+
+        plt.tight_layout()
+        plt.show()

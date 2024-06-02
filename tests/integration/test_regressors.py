@@ -59,7 +59,7 @@ def test_logistic_regression(sample_data_classification):
     X_train, X_test, y_train, y_test = sample_data_classification
 
     # tinyML model
-    model = regressors.LogisticRegression(learning_rate=0.1, epochs=2000, verbose=True)
+    model = regressors.LogisticRegression(learning_rate=0.1, epochs=2500)
     model.fit(X_train, y_train)
     y_pred = model.predict_binary(X_test)
 
