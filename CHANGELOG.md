@@ -1,3 +1,9 @@
+## v0.4.1 (2024-06-02)
+
+### Refactor
+
+- move logistic regression into classifiers
+
 ## v0.4.0 (2024-06-02)
 
 ### Feat
