@@ -1,3 +1,20 @@
+## v0.4.0 (2024-06-02)
+
+### Feat
+
+- add binary cross-entropy loss function
+- add logistic regression & test
+- add new metrics & activation function
+
+### Fix
+
+- fix wrong weights & bias gradients and add visualization method for training
+- fix ambiguity when checking for uninitialized weights / bias
+
+### Refactor
+
+- slightly move loss (& accuracy) calculation for better readability
+
 ## v0.3.2 (2024-06-01)
 
 ### Refactor
