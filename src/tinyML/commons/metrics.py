@@ -10,9 +10,11 @@ def mse(y_true, y_pred):
     return np.mean(np.square(y_true - y_pred))
 
 
-def cross_entropy(y_true, y_pred):
-    pass
+def binary_cross_entropy(y_true, y_pred):
+    epsilon = 1e-15  # to avoid log(0)
+    y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
+    return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
 
 
 def accuracy(y_true, y_pred):
-    return np.sum(y_pred == y_true) / len(y_true)
+    return np.mean(y_pred == y_true)
