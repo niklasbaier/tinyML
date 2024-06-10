@@ -1,3 +1,9 @@
+## v0.4.2 (2024-06-10)
+
+### Refactor
+
+- move BaseLinearRegression in its own file
+
 ## v0.4.1 (2024-06-02)
 
 ### Refactor
