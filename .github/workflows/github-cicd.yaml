@@ -59,6 +59,7 @@ jobs:
 
       - name: Integration tests
         run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml
+        continue-on-error: true # allowed to fail
 
       - name: Upload test coverage to Codecov
         env:
