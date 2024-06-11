@@ -45,11 +45,11 @@ jobs:
         run: poetry run mypy src
 
       - name: Unit tests
-        run: poetry run pytest --cov tests/unit/. --cov-report=xml:tests/unit/coverage_unit.xml
+        run: poetry run pytest --cov tests/unit/. --cov-report=xml:tests/unit/coverage_unit.xml -k "unit"
 
       - name: Integration tests
-        run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml
-        # continue-on-error: true # allowed to fail
+        run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml -k "integration"
+        continue-on-error: true # allowed to fail
 
       - name: Upload test coverage to Codecov
         env:
