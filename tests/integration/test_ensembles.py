@@ -1,18 +1,11 @@
 import pytest
-from sklearn import datasets, model_selection, tree
+from sklearn import tree
 
 from tinyML import ensembles, commons
 
 
-@pytest.fixture
-def sample_data():
-    sample_dataset = datasets.load_breast_cancer()
-    X, y = sample_dataset.data, sample_dataset.target
-    return model_selection.train_test_split(X, y, test_size=0.2, random_state=1234)
-
-
-def test_decision_tree(sample_data):
-    X_train, X_test, y_train, y_test = sample_data
+def test_decision_tree(sample_data_classification):
+    X_train, X_test, y_train, y_test = sample_data_classification
 
     # tinyML model
     model = ensembles.DecisionTreeClassifier()
