@@ -44,22 +44,12 @@ jobs:
       - name: Static tests - type checking with mypy
         run: poetry run mypy src
 
-      # only applicable if using an API service that uses OpenAPI
-      # - name: OpenAPI spec linting
-      #   run: poetry run openapi-spec-validator services/api/openapi.yml
-
-      # only applicable if using a DB service that uses alembic for migrations
-      # - name: Alembic check
-      #   run: |
-      #     poetry run alembic upgrade head
-      #     poetry run alembic check
-
       - name: Unit tests
         run: poetry run pytest --cov tests/unit/. --cov-report=xml:tests/unit/coverage_unit.xml
 
       - name: Integration tests
         run: poetry run pytest --cov tests/integration/. --cov-report=xml:tests/integration/coverage_integration.xml
-        continue-on-error: true # allowed to fail
+        # continue-on-error: true # allowed to fail
 
       - name: Upload test coverage to Codecov
         env:
