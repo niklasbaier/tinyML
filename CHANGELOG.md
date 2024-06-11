@@ -1,3 +1,15 @@
+## v0.5.0 (2024-06-11)
+
+### Feat
+
+- add DecisionTreeClassifier & integration test
+- add utility functions to calculate information gain & entropy
+
+### Refactor
+
+- move DecisionTreeClassifier out into own module
+- move sample data fixtures into conftest
+
 ## v0.4.2 (2024-06-10)
 
 ### Refactor
