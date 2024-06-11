@@ -1,3 +1,4 @@
-from tinyML.ensembles.base import DecisionTreeClassifier
+from tinyML.ensembles.base import Node
+from tinyML.ensembles.decision_tree import DecisionTreeClassifier
 
-__all__ = ["DecisionTreeClassifier"]
+__all__ = ["Node", "DecisionTreeClassifier"]
